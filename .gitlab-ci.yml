@@ -1,0 +1,18 @@
+image: monoless/ansible-docker:18.09.9-dind-03
+
+services:
+  - name: monoless/ansible-docker:18.09.9-dind-03
+    command: ["--insecure-registry={nexus_ip}:5443"]
+
+stages:
+  - build
+
+variables:
+  IMAGE_NAME: openstack:$CI_PIPELINE_ID
+
+build:
+  stage: build
+  script:
+    - docker build . -t $IMAGE_NAME
+    - docker login -u $DOCKER_PRIVATE_USER -p $DOCKER_PRIVATE_PASSWORD $DOCKER_PRIVATE_HOST
+    - docker push $IMAGE_NAME
