@@ -1,4 +1,4 @@
-image: monoless/ansible-docker:18.09.9-dind-03
+image: docker:18.09
 
 services:
   - name: monoless/ansible-docker:18.09.9-dind-03
