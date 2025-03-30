@@ -8,7 +8,7 @@ stages:
   - build
 
 variables:
-  IMAGE_NAME: openstack:$CI_PIPELINE_ID
+  IMAGE_NAME: $DOCKER_PRIVATE_HOST/openstack:$CI_PIPELINE_ID
 
 build:
   stage: build
